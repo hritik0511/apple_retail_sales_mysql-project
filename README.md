@@ -4,35 +4,19 @@
 
 ## Project Overview
 
-This project is designed to showcase advanced SQL querying techniques through the analysis of over 1 million rows of Apple retail sales data. The dataset includes information about products, stores, sales transactions, and warranty claims across various Apple retail locations globally. By tackling a variety of questions, from basic to complex, you'll demonstrate your ability to write sophisticated SQL queries that extract valuable insights from large datasets.
-
-The project is ideal for data analysts looking to enhance their SQL skills by working with a large-scale dataset and solving real-world business questions.
+This project is designed to showcase advanced SQL querying techniques through the analysis of over more than Half a million rows of Apple retail sales data. The dataset includes information about products, stores, sales transactions, and warranty claims across various Apple retail locations globally. By tackling a variety of questions, from basic to complex, you'll demonstrate your ability to write sophisticated SQL queries that extract valuable insights from large datasets.
 
 ## Entity Relationship Diagram (ERD)
 
-![ERD](https://github.com/najirh/Apple-Retail-Sales-SQL-Project---Analyzing-Millions-of-Sales-Rows/blob/main/erd.png)
-
-**Get the guided project/datasets here**: [Get the Project Datasets](https://topmate.io/zero_analyst/1237072)
-
-Here’s the shortened and improved version of the "What’s Included" and "Why Choose This Project" sections, along with the link:
-
----
+![ERD](https://github.com/hritik0511/apple_retail_sales_mysql-project/blob/main/Capture.PNG)
 
 ### What’s Included:
 - **100 SQL Practice Problems**: Extensive coverage of major SQL topics for mastering concepts with real-world data.
 - **20 Advanced SQL Queries**: Step-by-step solutions for complex queries, enhancing your skills in performance tuning and optimization.
-- **5 Detailed Tables**: Comprehensive datasets with over 1 million rows, including sales, stores, product categories, products, and warranties.
+- **5 Detailed Tables**: Comprehensive datasets with over more than Half a million rows, including sales, stores, product categories, products, and warranties.
 - **Query Performance Tuning**: Learn to optimize queries for real-world data handling.
 - **Portfolio-Ready Project**: Showcase your SQL expertise through large-scale data analysis.
-
-### Why Choose This Project?
-- **Hands-on Learning**: Practical experience with complex datasets and advanced business problem-solving.
-- **Comprehensive Coverage**: Each table provides new opportunities to explore SQL concepts.
-- **Exceptional Value**: For just **$9**, access 100 SQL problems, 20 advanced query solutions, and a real-world project.
-- **Limited Offer**: Special price available for the **first 100 students**!
-
-**Get the guided project/datasets here**: [Get the Project Datasets](https://topmate.io/zero_analyst/1237072)
-
+  
 ## Database Schema
 
 The project uses five main tables:
@@ -100,10 +84,6 @@ The project is split into three tiers of questions to test SQL skills of increas
 19. Identify the store with the highest percentage of "Paid Repaired" claims relative to total claims filed.
 20. Write a query to calculate the monthly running total of sales for each store over the past four years and compare trends during this period.
 
-### Bonus Question
-
-- Analyze product sales trends over time, segmented into key periods: from launch to 6 months, 6-12 months, 12-18 months, and beyond 18 months.
-
 ## Project Focus
 
 This project primarily focuses on developing and showcasing the following SQL skills:
@@ -120,9 +100,3 @@ This project primarily focuses on developing and showcasing the following SQL sk
 - **Size**: 1 million+ rows of sales data.
 - **Period Covered**: The data spans multiple years, allowing for long-term trend analysis.
 - **Geographical Coverage**: Sales data from Apple stores across various countries.
-
-## Conclusion
-
-By completing this project, you will develop advanced SQL querying skills, improve your ability to handle large datasets, and gain practical experience in solving complex data analysis problems that are crucial for business decision-making. This project is an excellent addition to your portfolio and will demonstrate your expertise in SQL to potential employers.
-
----
