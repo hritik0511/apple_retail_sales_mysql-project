@@ -9,13 +9,6 @@ This project is designed to showcase advanced SQL querying techniques through th
 ## Entity Relationship Diagram (ERD)
 
 ![ERD](https://github.com/hritik0511/apple_retail_sales_mysql-project/blob/main/Capture.PNG)
-
-### What’s Included:
-- **100 SQL Practice Problems**: Extensive coverage of major SQL topics for mastering concepts with real-world data.
-- **20 Advanced SQL Queries**: Step-by-step solutions for complex queries, enhancing your skills in performance tuning and optimization.
-- **5 Detailed Tables**: Comprehensive datasets with over more than Half a million rows, including sales, stores, product categories, products, and warranties.
-- **Query Performance Tuning**: Learn to optimize queries for real-world data handling.
-- **Portfolio-Ready Project**: Showcase your SQL expertise through large-scale data analysis.
   
 ## Database Schema
 
