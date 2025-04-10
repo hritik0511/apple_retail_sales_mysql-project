@@ -3,7 +3,7 @@
 -- 1.Find the number of stores in each country.
 
 SELECT 
-country,
+ country,
  count(store_name) as total_stores 
 FROM stores 
 GROUP BY country 
