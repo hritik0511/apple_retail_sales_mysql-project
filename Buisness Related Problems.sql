@@ -35,19 +35,19 @@ SELECT
 COUNT(*) 
 FROM stores
 WHERE store_id NOT IN (
-						SELECT 
-						DISTINCT(store_id) 
-						FROM sales s
-						RIGHT JOIN warranty w
-						ON s.sale_id = w.sale_id
+			SELECT 
+			DISTINCT(store_id) 
+			FROM sales s
+			RIGHT JOIN warranty w
+			ON s.sale_id = w.sale_id
                     );
                     
 -- 5.Calculate the percentage of warranty claims marked as "Warranty Void"
 
 SELECT
 	ROUND(
-			COUNT(claim_id)/
-							CAST((SELECT COUNT(*) FROM warranty) AS DECIMAL)*100
+		COUNT(claim_id)/
+				CAST((SELECT COUNT(*) FROM warranty) AS DECIMAL)*100
             ,2) as warranty_void_percentage 
 FROM warranty
 WHERE repair_status = 'Warranty Void';
@@ -55,7 +55,7 @@ WHERE repair_status = 'Warranty Void';
 -- 6. Identify which store had the highest total units sold in the last year
 
 SELECT
-	s.store_id,
+    s.store_id,
     st.store_name,
     SUM(s.quantity) AS total_unit_sold
 FROM sales s
@@ -77,7 +77,7 @@ WHERE sale_date BETWEEN '2020-01-01' AND '2021-01-01';
 -- 8.Find the average price of products in each category.
 
 SELECT
-	c.category_id,
+    c.category_id,
     c.category_name,
     AVG(p.price) AS avg_price
 FROM products p
@@ -89,7 +89,7 @@ ORDER BY 3 DESC;
 -- 9.How many warranty claims were filed in 2020
 
 SELECT
-	COUNT(*)
+     COUNT(*)
 FROM warranty
 WHERE claim_date LIKE '2020%';
 
@@ -97,7 +97,7 @@ WHERE claim_date LIKE '2020%';
 
 SELECT *
 FROM (
-		SELECT 
+	SELECT 
          store_id,
          DAYNAME(sale_date) as days_name,
          SUM(quantity) as total_units_sold,
@@ -112,7 +112,7 @@ WHERE ranks = 1;
 WITH product_rank
 AS(
 SELECT
-	st.country,
+    st.country,
     p.product_name,
     SUM(s.quantity) as total_qty_sold,
     RANK() OVER(PARTITION BY st.country ORDER BY SUM(s.quantity)) as ranks
@@ -130,7 +130,7 @@ WHERE ranks = 1;
 -- 12.Calculate how many warranty claims were filed within 180 days of a product sale
 
 SELECT 
-	COUNT(*)
+     COUNT(*)
 FROM warranty as w
 LEFT JOIN sales as s
 ON s.sale_id = w.sale_id
@@ -139,7 +139,7 @@ WHERE w.claim_date - s.sale_date <= 180;
 -- 13.Determine how many warranty claims were filed for products launched in the last 4 years
 
 SELECT
-	p.product_name,
+    p.product_name,
     COUNT(w.claim_id) as total_claims
 FROM warranty as w
 RIGHT JOIN sales as s
@@ -154,7 +154,7 @@ GROUP BY 1;
 WITH intermediate_result
 AS(
 SELECT
-	MONTHNAME(s.sale_date) as month_name,
+    MONTHNAME(s.sale_date) as month_name,
     SUM(s.quantity) as total_units_sold
 FROM sales as s
 LEFT JOIN stores as st
@@ -169,7 +169,7 @@ WHERE total_units_sold > 5000;
 -- 15.Identify the product category with the most warranty claims filed in the last two years.
 
 SELECT 
-	c.category_name,
+    c.category_name,
     COUNT(w.claim_id) as total_claims
 FROM warranty as w
 LEFT JOIN sales as s   
@@ -186,7 +186,7 @@ GROUP BY 1;
 WITH t1
 AS (
 SELECT 
-	st.country,
+    st.country,
     SUM(s.quantity) as total_units_sold,
     COUNT(w.claim_id) as total_claims
 FROM sales as s
@@ -196,7 +196,7 @@ LEFT JOIN warranty as w
 ON s.sale_id = w.sale_id
 GROUP BY 1 )
 SELECT 
-	country,
+    country,
     total_claims,
     total_units_sold,
     ROUND(((total_claims)/(total_units_sold) * 100 ),2) AS risk
@@ -208,7 +208,7 @@ ORDER BY 4 DESC;
 WITH yearly_sales
 AS(
 SELECT
-	s.store_id,
+    s.store_id,
     st.store_name,
     EXTRACT(YEAR FROM sale_date) as year_,
     SUM(s.quantity * p.price) as total_sale
@@ -223,14 +223,14 @@ ORDER BY 1,3
 growth_ratio 
 AS(
 SELECT
-	store_name,
+    store_name,
     year_,
     LAG(total_sale, 1) OVER(PARTITION BY store_name ORDER BY year_) as last_year_sale,
     total_sale as current_year_sales
 FROM yearly_sales
 )
 SELECT 
-	store_name,
+    store_name,
     year_,
     last_year_sale,
     current_year_sales,
@@ -244,9 +244,9 @@ WHERE last_year_sale IS NOT NULL
 
 SELECT
 	CASE
-		WHEN p.price < 500 THEN 'Less Expensive Product'
-        WHEN p.price BETWEEN 500 AND 1000 THEN 'Mid Range Product'
-        ELSE 'Expensive Product'
+	   WHEN p.price < 500 THEN 'Less Expensive Product'
+           WHEN p.price BETWEEN 500 AND 1000 THEN 'Mid Range Product'
+           ELSE 'Expensive Product'
 	END as price_segment,
     COUNT(w.claim_id) as total_claim
 FROM warranty as w
@@ -262,7 +262,7 @@ GROUP BY 1;
 WITH paid_repaired 
 AS
 (SELECT 
-	s.store_id,
+    s.store_id,
     COUNT(w.claim_id) as paid_repaired
 FROM sales as s
 RIGHT JOIN warranty as w
@@ -272,14 +272,14 @@ GROUP BY 1
 ),total_repaired 
 AS
 (SELECT 
-	s.store_id,
+    s.store_id,
     COUNT(w.claim_id) as total_repaired
 FROM sales as s
 RIGHT JOIN warranty as w
 ON s.sale_id = w.sale_id
 GROUP BY 1)
 SELECT
-	tr.store_id,
+    tr.store_id,
     st.store_name,
     tr.total_repaired,
     pr.paid_repaired,
@@ -296,7 +296,7 @@ ON tr.store_id = st.store_id;
 WITH t1 
 AS
 (SELECT 
-	s.store_id,
+    s.store_id,
     EXTRACT(YEAR FROM s.sale_date) as year_,
     EXTRACT(MONTH FROM s.sale_date) as month_,
     SUM(s.quantity * p.price) as total_revenue
